@@ -23,7 +23,7 @@ Long description of module's purpose
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/persona.xml',
+        'views/alumno.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

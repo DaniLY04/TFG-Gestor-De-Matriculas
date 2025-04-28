@@ -14,7 +14,7 @@ class persona(models.Model):
     dni = fields.Char(string="DNI")
     nie = fields.Char(string="NIE")
 
-    dni_nie = fields.Char(string="DNI/NIE",store = True)
+    dni_nie = fields.Char(string="DNI/NIE",store = True,compute='_compute_dni_nie')
 
     isDniSelected = fields.Boolean(compute='_compute_document_selection')
     isNieSelected = fields.Boolean(compute='_compute_document_selection')
@@ -32,10 +32,20 @@ class persona(models.Model):
         for rec in self:
             rec.dni_nie = rec.dni or rec.nie or ''
 
+    @api.onchange('type_document')
+    def _onchange_type_document(self):
+        for rec in self:
+            if rec.type_document == 'dni':
+                rec.nie = False                 
+                rec.dni_nie = rec.dni   
+            else:
+                rec.dni = False                
+                rec.dni_nie = rec.nie
+
     @api.depends('type_document')
     def _compute_document_selection(self):
         for record in self :
-            if record.type_document == 'dni':
+            if record.type_document == 'dni':   
                 record.isDniSelected = True
                 record.isNieSelected = False
             elif record.type_document == 'nie':
