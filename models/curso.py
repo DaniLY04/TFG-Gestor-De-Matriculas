@@ -1,11 +1,22 @@
 from odoo import models, fields, api
 
 
-class gestor_de_matriculas(models.Model):
-    _name = 'gestor_de_matriculas.gestor_de_matriculas'
-    _description = 'gestor_de_matriculas.gestor_de_matriculas'
+class curso(models.Model):
+    _name = 'gestor_de_matriculas.curso'
+    _description = 'Cursos'
 
-    name = fields.Char()
-    value = fields.Integer()
-    value2 = fields.Float(compute="_value_pc", store=True)
-    description = fields.Text()
+    id_course = fields.Char(string="ID Curso", required = True)
+    name = fields.Char(string="Nombre", required = True)
+    shift = fields.Selection([
+        ('matutino', 'Matutino'),
+        ('vespertino', 'Vespertino'),
+        ('nocturno', 'Nocturno'),
+        ('online', 'Online')
+    ], string="Turno", default='matutino', required=True)
+    teachers = fields.Many2many('gestor_de_matriculas.profesor', string="Profesores")
+    students = fields.One2many('gestor_de_matriculas.alumno', 'actual_course', string="Alumnos")
+    #subjects = fields.Many2Many('gestor_de_matriculas.asignaturas', string="Asignaturas")
+    total_hours = fields.Integer(string='Horas Totales')
+    tutor = fields.Many2one('gestor_de_matriculas.profesor', string="Tutor")
+    year = fields.Char(string="Año")
+    promotion = fields.Integer(string="Promoción")

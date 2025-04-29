@@ -15,6 +15,6 @@ class alumno(models.Model):
     )
     
     latest_study = fields.Char(string="Ultimo Estudio",required = True)
-    #actual_course = fields.Many2one()
+    actual_course = fields.Many2one('gestor_de_matriculas.curso', string="Curso Actual")
     #report_card = fields.One2many('gestor_de_matriculas.boletin_notas')
     #school_registration = fields.One2Many('gestor_de_matriculas.matricula',required = True)
