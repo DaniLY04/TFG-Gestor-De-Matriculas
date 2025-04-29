@@ -24,6 +24,7 @@ Long description of module's purpose
     'data': [
         # 'security/ir.model.access.csv',
         'views/alumno.xml',
+        'views/profesor.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,14 +1,14 @@
 <odoo>
     <data>
-        <record model="ir.ui.view" id="view_alumno_list">
-            <field name="name">gestor_de_matriculas.alumno.list</field>
-            <field name="model">gestor_de_matriculas.alumno</field>
+        <record model="ir.ui.view" id="view_profesor_list">
+            <field name="name">gestor_de_matriculas.profesor.list</field>
+            <field name="model">gestor_de_matriculas.profesor</field>
             <field name="arch" type="xml">
-                <list string="Alumnos">
+                <list string="Profesores">
                     <field name="name"/>
                     <field name="lastName"/>
                     <field name="dni_nie"/>
-                    <!-- <field name="school_registration"/> -->
+                    <field name="ssn"/>
                     <field name="phone"/>
                     <field name="email"/>
                     <field name="photo" widget="image" class="mi_imagen_tree"/>
@@ -16,11 +16,11 @@
             </field>
         </record>
 
-        <record id="view_alumno_form" model="ir.ui.view">
-            <field name="name">gestor_de_matriculas.alumno.form</field>
-            <field name="model">gestor_de_matriculas.alumno</field>
+        <record id="view_profesor_form" model="ir.ui.view">
+            <field name="name">gestor_de_matriculas.profesor.form</field>
+            <field name="model">gestor_de_matriculas.profesor</field>
             <field name="arch" type="xml">
-                <form string="Alumnos">
+                <form string="Profesores">
                     <sheet>
                         <group string="Información Personal">
                             <group>
@@ -29,6 +29,7 @@
                                 <field name="type_document" widget="radio"/>
                                 <field name="dni" invisible = "isNieSelected" />
                                 <field name="nie" invisible = "isDniSelected" />
+                                <field name="ssn"/>
                                 <field name="date_birth"/>
                             </group>
                             <group>
@@ -39,34 +40,34 @@
                                 <field name="phone" widget="phone"/>
                                 <field name="email" widget="email"/>
                             </group>
-                            <group string="Información Academica">
-                                <field name="latest_study"/>
-                                <!--
-                                <field name="actual_course"/>
-                                <field name="report_card"/>
-                                <field name="school_registration"/>
-                                -->
-                            </group>
+                        </group>
+                        <group string="Información Profesional">
+                            <field name="is_tutor" widget="radio"/>
+                            <!--
+                            <field name="course_tutor"/>
+                            <field name="courses"/>
+                            <field name="subjects"/>
+                            -->
+                            <field name="qualifications"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <record id="action_alumno" model="ir.actions.act_window">
-            <field name="name">Alumnos</field>
-            <field name="res_model">gestor_de_matriculas.alumno</field>
+        <record id="action_profesor" model="ir.actions.act_window">
+            <field name="name">Profesores</field>
+            <field name="res_model">gestor_de_matriculas.profesor</field>
             <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Alumnos
+                    Profesores
                 </p>
                 <p>
-                    Click 'Nuevo' para añadir nuevos alumnos.
+                    Click 'Nuevo' para añadir nuevos profesores.
                 </p>
             </field>
         </record>
-    <menuitem id="menu_gestor_matriculas_root" name="Gestor de Matrículas"/>
-    <menuitem id="menu_alumno" name="Alumnos" parent="menu_gestor_matriculas_root" action="action_alumno"/>
+        <menuitem id="menu_profesor" name="Profesor" parent="menu_gestor_matriculas_root" action="action_profesor"/>
     </data>
 </odoo>
