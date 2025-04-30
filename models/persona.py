@@ -36,11 +36,9 @@ class persona(models.Model):
     def _onchange_type_document(self):
         for rec in self:
             if rec.type_document == 'dni':
-                rec.nie = False                 
-                rec.dni_nie = rec.dni   
+                rec.nie = False                  
             else:
                 rec.dni = False                
-                rec.dni_nie = rec.nie
 
     @api.depends('type_document')
     def _compute_document_selection(self):

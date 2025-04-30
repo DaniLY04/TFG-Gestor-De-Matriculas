@@ -19,4 +19,4 @@ class curso(models.Model):
     total_hours = fields.Integer(string='Horas Totales')
     tutor = fields.Many2one('gestor_de_matriculas.profesor', string="Tutor")
     year = fields.Char(string="Año")
-    promotion = fields.Integer(string="Promoción")
+    promotion = fields.Char(string="Promoción")

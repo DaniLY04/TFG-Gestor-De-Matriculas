@@ -16,7 +16,7 @@ class profesor(models.Model):
     
     ssn = fields.Integer(string="Numero de la Seguridad Social",required = True)
     is_tutor = fields.Boolean(string="Tutor", default = False)
-    course_tutor = fields.One2many('gestor_de_matriculas.curso', 'tutor', string="Curso Tutorizado")
+    course_tutor = fields.Many2one('gestor_de_matriculas.curso', string="Curso Tutorizado")
     courses = fields.Many2many('gestor_de_matriculas.curso', string="Cursos Impartidos")
     #subjects = fields.Many2Many('gestor_de_matriculas.asignaturas', string="Asignaturas")
     qualifications = fields.Text(string="Titulaciones")

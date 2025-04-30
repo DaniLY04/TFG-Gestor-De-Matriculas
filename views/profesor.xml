@@ -40,15 +40,15 @@
                                 <field name="phone" widget="phone"/>
                                 <field name="email" widget="email"/>
                             </group>
-                        </group>
-                        <group string="Información Profesional">
-                            <field name="is_tutor" widget="radio"/>
-                            <!--
-                            <field name="course_tutor"/>
-                            <field name="courses"/>
-                            <field name="subjects"/>
-                            -->
-                            <field name="qualifications"/>
+                            <group string="Información Profesional">
+                                <field name="is_tutor"/>
+                                <field name="course_tutor"/>
+                                <field name="courses"/>
+                                <!--
+                                <field name="subjects"/>
+                                -->
+                                <field name="qualifications"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
