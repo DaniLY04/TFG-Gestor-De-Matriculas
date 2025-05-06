@@ -41,8 +41,8 @@
                             </group>
                             <group string="Información Academica">
                                 <field name="latest_study"/>
-                                <!--
                                 <field name="actual_course"/>
+                                <!--
                                 <field name="report_card"/>
                                 <field name="school_registration"/>
                                 -->

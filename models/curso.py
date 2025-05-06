@@ -14,7 +14,7 @@ class curso(models.Model):
         ('online', 'Online')
     ], string="Turno", default='matutino', required=True)
     teachers = fields.Many2many('gestor_de_matriculas.profesor', string="Profesores")
-    students = fields.One2many('gestor_de_matriculas.alumno', 'actual_course', string="Alumnos")
+    students = fields.Many2many('gestor_de_matriculas.alumno', string="Alumnos")
     #subjects = fields.Many2Many('gestor_de_matriculas.asignaturas', string="Asignaturas")
     total_hours = fields.Integer(string='Horas Totales')
     tutor = fields.Many2one('gestor_de_matriculas.profesor', string="Tutor")

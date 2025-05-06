@@ -14,15 +14,17 @@
                         <field name="shift"/>
                         <field name="total_hours"/>
                         <field name="tutor"/>
-                        <field name="teachers" widget="many2many_tags"/>
                     </group>
                     <notebook>
                         <page string="Alumnos">
-                            <field name="students">
-                                <list editable="bottom">
+                            <field name="students"  widget="many2many"/>
+                        </page>
+                        <page string="Profesores">
+                            <field name="teachers">
+                                <list>
                                     <field name="name"/>
                                     <field name="lastName"/>
-                                    <field name="latest_study"/>
+                                    <field name="ssn"/>
                                 </list>
                             </field>
                         </page>
