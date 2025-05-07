@@ -26,6 +26,7 @@ Long description of module's purpose
         'views/alumno.xml',
         'views/profesor.xml',
         'views/curso.xml',
+        'views/asignatura.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

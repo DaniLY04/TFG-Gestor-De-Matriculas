@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <record id="view_asignatura_form" model="ir.ui.view">
+            <field name="name">gestor_de_matriculas.asignatura.form</field>
+            <field name="model">gestor_de_matriculas.asignatura</field>
+            <field name="arch" type="xml">
+                <form string="Asignatura">
+                    <sheet>
+                        <group>
+                            <field name="id_subject"/>
+                            <field name="name"/>
+                            <field name="weekly_hours"/>
+                            <field name="convalidable"/>
+                        </group>
+                        <notebook>
+                            <page string="Profesores">
+                                <field name="teachers" widget="many2many">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="lastName"/>
+                                        <field name="dni_nie"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Cursos">
+                                <field name="courses" widget="many2many"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_asignatura_list" model="ir.ui.view">
+            <field name="name">gestor_de_matriculas.asignatura.list</field>
+            <field name="model">gestor_de_matriculas.asignatura</field>
+            <field name="arch" type="xml">
+                <list string="Asignaturas">
+                    <field name="id_subject"/>
+                    <field name="name"/>
+                    <field name="weekly_hours"/>
+                    <field name="convalidable"/>
+                </list>
+            </field>
+        </record>
+        <record id="action_asignatura" model="ir.actions.act_window">
+            <field name="name">Asignaturas</field>
+            <field name="res_model">gestor_de_matriculas.asignatura</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <menuitem id="menu_asignaturas" name="Asignaturas" parent="menu_gestor_matriculas_root" action="action_asignatura"/>
+    </data>
+</odoo>
