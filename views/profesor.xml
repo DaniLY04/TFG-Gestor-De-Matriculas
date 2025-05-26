@@ -44,9 +44,7 @@
                                 <field name="is_tutor"/>
                                 <field name="course_tutor"/>
                                 <field name="courses"/>
-                                <!--
                                 <field name="subjects"/>
-                                -->
                                 <field name="qualifications"/>
                             </group>
                         </group>

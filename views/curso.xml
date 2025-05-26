@@ -1,23 +1,31 @@
 <odoo>
-    <!-- Vista de formulario para el modelo gestor_de_matriculas.curso -->
     <record id="view_curso_form" model="ir.ui.view">
         <field name="name">gestor_de_matriculas.curso.form</field>
         <field name="model">gestor_de_matriculas.curso</field>
         <field name="arch" type="xml">
             <form string="Curso">
                 <sheet>
-                    <group>
-                        <field name="id_course"/>
-                        <field name="name"/>
-                        <field name="year"/>
-                        <field name="promotion"/>
-                        <field name="shift"/>
-                        <field name="total_hours"/>
-                        <field name="tutor"/>
+                    <group string="Información del Curso" col="2">
+                        <group>
+                            <field name="id_course"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="shift"/>
+                            <field name="total_hours"/>
+                            <field name="promotion"/>
+                            <field name="tutor"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Alumnos">
-                            <field name="students"  widget="many2many"/>
+                            <field name="students" >
+                                <list create="false">
+                                    <field name="lastName"/>
+                                    <field name="name"/>
+                                    <field name="dni_nie"/>
+                                </list>
+                            </field>
                         </page>
                         <page string="Profesores">
                             <field name="teachers">
@@ -28,13 +36,14 @@
                                 </list>
                             </field>
                         </page>
+                        <page string="Asignaturas">
+                            <field name="subjects" widget="many2many"/>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
-
-    <!-- Vista de lista para el modelo gestor_de_matriculas.curso -->
     <record id="view_curso_list" model="ir.ui.view">
         <field name="name">gestor_de_matriculas.curso.list</field>
         <field name="model">gestor_de_matriculas.curso</field>
@@ -43,13 +52,10 @@
                 <field name="id_course"/>
                 <field name="name"/>
                 <field name="shift"/>
-                <field name="year"/>
                 <field name="tutor"/>
             </list>
         </field>
     </record>
-
-    <!-- Acción para acceder al modelo gestor_de_matriculas.curso -->
     <record id="action_curso" model="ir.actions.act_window">
         <field name="name">Cursos</field>
         <field name="res_model">gestor_de_matriculas.curso</field>

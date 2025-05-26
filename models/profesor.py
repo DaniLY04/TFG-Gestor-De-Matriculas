@@ -18,8 +18,8 @@ class profesor(models.Model):
     is_tutor = fields.Boolean(string="Tutor", default = False)
     course_tutor = fields.Many2one('gestor_de_matriculas.curso', string="Curso Tutorizado")
     courses = fields.Many2many('gestor_de_matriculas.curso', string="Cursos Impartidos")
-    #subjects = fields.Many2Many('gestor_de_matriculas.asignaturas', string="Asignaturas")
-    qualifications = fields.Text(string="Titulaciones")
+    subjects = fields.Many2many('gestor_de_matriculas.asignatura', string="Asignaturas" , relation='asignatura_profesor_rel')
+    qualifications = fields.Text(string="Titulos Académicos")
 
     _sql_constraints = [
         ('unique_ssn', 'UNIQUE(ssn)', 'Ya existe un profesor con ese SSN.')
