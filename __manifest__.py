@@ -27,6 +27,7 @@ Long description of module's purpose
         'views/profesor.xml',
         'views/curso.xml',
         'views/asignatura.xml',
+        'views/boletin_notas.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

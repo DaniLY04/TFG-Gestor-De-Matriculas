@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="increment_boletin_sequence" model="ir.sequence">
+            <field name="name">ID Boletín Automático</field>
+            <field name="code">gestor_de_matriculas.boletin_notas</field>
+            <field name="prefix">BOLETIN-</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

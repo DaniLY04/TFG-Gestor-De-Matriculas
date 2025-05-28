@@ -10,7 +10,6 @@ class curso(models.Model):
     shift = fields.Selection([
         ('matutino', 'Matutino'),
         ('vespertino', 'Vespertino'),
-        ('nocturno', 'Nocturno'),
         ('online', 'Online')
     ], string="Turno", default='matutino', required=True)
     teachers = fields.Many2many('gestor_de_matriculas.profesor', string="Profesores")
@@ -19,3 +18,25 @@ class curso(models.Model):
     total_hours = fields.Integer(string='Horas Totales')
     tutor = fields.Many2one('gestor_de_matriculas.profesor', string="Tutor")
     promotion = fields.Char(string="Promoción")
+
+    @api.onchange('students')
+    def _onchange_students(self):
+        for curso in self:
+            for alumno in curso.students:
+                alumno.actual_course = curso.id
+
+    @api.model
+    def create(self, vals):
+        curso = super().create(vals)
+        curso.students.write({'actual_course': curso.id})
+        return curso
+    
+    def write(self, vals):
+        res = super().write(vals)
+        for curso in self:
+            if 'students' in vals:
+                alumnos_actuales = self.env['gestor_de_matriculas.alumno'].search([('actual_course', '=', curso.id)])
+                alumnos_quitar = alumnos_actuales - curso.students
+                alumnos_quitar.write({'actual_course': False})
+                curso.students.write({'actual_course': curso.id})
+        return res

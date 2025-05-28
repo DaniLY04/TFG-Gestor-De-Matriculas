@@ -20,7 +20,7 @@
                     <notebook>
                         <page string="Alumnos">
                             <field name="students" >
-                                <list create="false">
+                                <list>
                                     <field name="lastName"/>
                                     <field name="name"/>
                                     <field name="dni_nie"/>
@@ -53,6 +53,7 @@
                 <field name="name"/>
                 <field name="shift"/>
                 <field name="tutor"/>
+                <field name="promotion"/>
             </list>
         </field>
     </record>
