@@ -1,0 +1,81 @@
+<odoo>
+  <template id="boletin_notas_pdf">
+    <t t-call="web.html_container">
+      <t t-call="web.external_layout">
+        <div class="page">
+          <div class="row" style="justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <strong t-esc="company.name"/>
+            </div>
+            <div>
+              <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo.decode()" style="height:80px;"/>
+            </div>
+          </div>
+
+          <h2 style="margin-top: 20px; font-style: italic; font-weight: bold;" t-esc="doc.name"/>
+
+          <div class="row" style="margin-top: 10px;">
+            <div><strong>Alumno:</strong> <span t-esc="doc.student.name"/> <span t-esc="doc.student_last_name"/></div>
+            <div style="margin-left: 80px;"><strong>DNI/NIE:</strong> <span t-esc="doc.student_dni"/></div>
+          </div>
+
+          <div class="row" style="margin-top: 5px;">
+            <div><strong>ID Curso:</strong> <span t-esc="doc.course_id_course"/></div>
+            <div style="margin-left: 40px;"><strong>Nombre:</strong> <span t-esc="doc.course_name"/></div>
+            <div style="margin-left: 40px;"><strong>Promoción:</strong> <span t-esc="doc.course_promotion"/></div>
+          </div>
+
+          <div class="row" style="margin-top: 5px;">
+            <strong>Tutor:</strong> <span t-esc="doc.tutor.name"/>
+          </div>
+
+          <table class="table table-sm mt32">
+            <thead>
+              <tr>
+                <th>Asignatura</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr t-foreach="doc.nota" t-as="line">
+                <td><span t-esc="line.asignatura.name"/></td>
+                <td><span t-esc="line.nota"/></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top: 20px;">
+            <strong>Comentarios:</strong>
+            <p t-esc="doc.comentarios"/>
+          </div>
+
+          <div style="margin-top: 40px;">
+            <p><i>Firma del Colegio:</i> ________________________________</p>
+          </div>
+            <t t-if="doc.qr_code">
+                <div style="text-align:center; margin-top:10px;">
+                    <p><strong>Verificación del boletín</strong></p>
+                    <img t-att-src="'data:image/png;base64,%s' % doc.qr_code.decode()" style="width:100px; height:100px;"/>
+                    <p style="font-size:10px;">Escanee para comprobar la veracidad del documento</p>
+                </div>
+            </t>
+          <div class="footer" style="margin-top: 60px; font-size: 10px; text-align: center; color: #666;">
+            <span t-esc="company.website or ''"/> | 
+            <span t-esc="company.phone or ''"/> | 
+            <span t-esc="company.email or ''"/> | 
+            <span t-esc="company.contact_address or ''"/>
+          </div>
+        </div>
+      </t>
+    </t>
+  </template>
+
+  <report
+        id="boletin_notas_report_action"
+        string="Boletín de Notas"
+        model="gestor_de_matriculas.boletin_notas_pdf"
+        report_type="qweb-pdf"
+        name="TFG-Gestor-De-Matriculas.boletin_notas_pdf"
+    />
+
+</odoo>
