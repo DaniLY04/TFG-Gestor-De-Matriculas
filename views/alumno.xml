@@ -8,7 +8,7 @@
                     <field name="name"/>
                     <field name="lastName"/>
                     <field name="dni_nie"/>
-                    <!-- <field name="school_registration"/> -->
+                    <field name="school_registration"/>
                     <field name="phone"/>
                     <field name="email"/>
                     <field name="photo" widget="image" class="mi_imagen_tree"/>
@@ -42,10 +42,7 @@
                             <group string="Información Academica">
                                 <field name="latest_study"/>
                                 <field name="actual_course"/>
-                                <!--
-                                <field name="report_card"/>
                                 <field name="school_registration"/>
-                                -->
                             </group>
                         </group>
                     </sheet>

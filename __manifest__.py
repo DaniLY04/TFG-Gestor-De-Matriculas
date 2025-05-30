@@ -23,13 +23,13 @@ Long description of module's purpose
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'reports/boletin_notas_pdf.xml',
         'data/sequence.xml',
         'views/alumno.xml',
         'views/profesor.xml',
         'views/curso.xml',
         'views/asignatura.xml',
         'views/boletin_notas.xml',
+        'views/matricula.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

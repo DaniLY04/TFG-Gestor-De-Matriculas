@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vista Formulario -->
+    <record id="view_matricula_form" model="ir.ui.view">
+        <field name="name">gestor_de_matriculas.matricula.form</field>
+        <field name="model">gestor_de_matriculas.matricula</field>
+        <field name="arch" type="xml">
+            <form string="Matrícula de Alumno">
+                <sheet>
+                    <group>
+                        <group>
+                            <group string="Datos del Alumno" col="2">
+                                <field name="alumno"/>
+                                <field name="apellidos" readonly="1"/>
+                                <field name="dni_nie" readonly="1"/>
+                                <field name="numero_expediente" readonly="1"/>
+                                <field name="fecha_nacimiento" readonly="1"/>
+                                <field name="direccion" readonly="1"/>
+                                <field name="telefono" readonly="1"/>
+                                <field name="email" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="foto" widget="image" readonly="1" class="oe_avatar"/>
+                            </group>
+                        </group>
+
+                        <group string="Curso y Acceso">
+                            <field name="curso_id"/>
+                            <field name="puntuacion_acceso"/>
+                            <field name="metodo_acceso"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Documentación De Titulación Necesaria">
+                            <field name="archivos_adicionales" widget="many2many_binary"/>
+                        </page>
+
+                        <page string="Asignaturas Convalidadas">
+                            <field name="asignaturas_convalidadas_ids"/>
+                        </page>
+
+                        <page string="Documentación para Convalidación">
+                            <field name="documentacion_convalidacion" widget="many2many_binary"/>
+                        </page>
+
+                        <page string="Estado del Alumno">
+                            <group>
+                                <field name="repite"/>
+                                <field name="promociona"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_matricula_list" model="ir.ui.view">
+        <field name="name">gestor_de_matriculas.matricula.list</field>
+        <field name="model">gestor_de_matriculas.matricula</field>
+        <field name="arch" type="xml">
+            <list string="Matrículas">
+                <field name="alumno"/>
+                <field name="curso_id"/>
+                <field name="puntuacion_acceso"/>
+                <field name="metodo_acceso"/>
+                <field name="repite"/>
+                <field name="promociona"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_matricula" model="ir.actions.act_window">
+        <field name="name">Matrículas</field>
+        <field name="res_model">gestor_de_matriculas.matricula</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_matricula_action" name="Matrículas" parent="menu_gestor_matriculas_root" action="action_matricula"/>
+</odoo>

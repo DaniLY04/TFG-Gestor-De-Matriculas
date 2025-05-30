@@ -22,11 +22,6 @@ class BoletinNotas(models.Model):
 
     nota = fields.One2many('gestor_de_matriculas.boletin_nota_linea', 'boletin', string="Notas")
     comentarios = fields.Text(string="Comentarios del Profesor")
-
-    qr_code = fields.Binary("Código QR", compute='_compute_qr_code', store=True)
-
-    def print_boletin_pdf(self):
-        return self.env.ref('gestor_de_matriculas.boletin_notas_report_action').report_action(self)
     
     @api.depends('student')
     def _compute_course(self):
@@ -41,7 +36,7 @@ class BoletinNotas(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('name', 'Nuevo') == 'Nuevo':
-            vals['name'] = self.env['ir.sequence'].next_by_code('gestor_de_matriculas.boletin_notas') or 'BOLETIN-000000'
+            vals['name'] = self.env['ir.sequence'].next_by_code('gestor_de_matriculas.boletin_notas')
         if 'student' in vals:
             alumno = self.env['gestor_de_matriculas.alumno'].browse(vals['student'])
             if alumno.actual_course:
@@ -56,21 +51,6 @@ class BoletinNotas(models.Model):
                 vals['nota'] = nota_lines
 
         return super(BoletinNotas, self).create(vals)
-
-    @api.depends('name')
-    def _compute_qr_code(self):
-        for record in self:
-            base_url = record.env['ir.config_parameter'].sudo().get_param('web.base.url')
-            qr_url = f"{base_url}/web#id={record.id}&model=gestor_de_matriculas.boletin_notas&view_type=form"
-            qr = qrcode.QRCode(box_size=4, border=2)
-            qr.add_data(qr_url)
-            qr.make(fit=True)
-            img = qr.make_image(fill_color="black", back_color="white")
-            buffer = BytesIO()
-            img.save(buffer, format='PNG')
-            record.qr_code = base64.b64encode(buffer.getvalue())
-    
-
 
 class BoletinNotaLinea(models.Model):
     _name = 'gestor_de_matriculas.boletin_nota_linea'
