@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
 <!--
-    <record model="ir.ui.view" id="gestor_de_matriculas.list">
-      <field name="name">GestorDeMatriculas list</field>
-      <field name="model">gestor_de_matriculas.gestor_de_matriculas</field>
+    <record model="ir.ui.view" id="gdm.list">
+      <field name="name">gdm list</field>
+      <field name="model">gdm.gdm</field>
       <field name="arch" type="xml">
         <list>
           <field name="name"/>
@@ -17,18 +17,18 @@
 
     <!-- actions opening views on models -->
 <!--
-    <record model="ir.actions.act_window" id="gestor_de_matriculas.action_window">
-      <field name="name">GestorDeMatriculas window</field>
-      <field name="res_model">gestor_de_matriculas.gestor_de_matriculas</field>
+    <record model="ir.actions.act_window" id="gdm.action_window">
+      <field name="name">gdm window</field>
+      <field name="res_model">gdm.gdm</field>
       <field name="view_mode">list,form</field>
     </record>
 -->
 
     <!-- server action to the one above -->
 <!--
-    <record model="ir.actions.server" id="gestor_de_matriculas.action_server">
-      <field name="name">GestorDeMatriculas server</field>
-      <field name="model_id" ref="model_gestor_de_matriculas_gestor_de_matriculas"/>
+    <record model="ir.actions.server" id="gdm.action_server">
+      <field name="name">gdm server</field>
+      <field name="model_id" ref="model_gdm_gdm"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
 <!--
-    <menuitem name="GestorDeMatriculas" id="gestor_de_matriculas.menu_root"/>
+    <menuitem name="gdm" id="gdm.menu_root"/>
 -->
     <!-- menu categories -->
 <!--
-    <menuitem name="Menu 1" id="gestor_de_matriculas.menu_1" parent="gestor_de_matriculas.menu_root"/>
-    <menuitem name="Menu 2" id="gestor_de_matriculas.menu_2" parent="gestor_de_matriculas.menu_root"/>
+    <menuitem name="Menu 1" id="gdm.menu_1" parent="gdm.menu_root"/>
+    <menuitem name="Menu 2" id="gdm.menu_2" parent="gdm.menu_root"/>
 -->
     <!-- actions -->
 <!--
-    <menuitem name="List" id="gestor_de_matriculas.menu_1_list" parent="gestor_de_matriculas.menu_1"
-              action="gestor_de_matriculas.action_window"/>
-    <menuitem name="Server to list" id="gestor_de_matriculas" parent="gestor_de_matriculas.menu_2"
-              action="gestor_de_matriculas.action_server"/>
+    <menuitem name="List" id="gdm.menu_1_list" parent="gdm.menu_1"
+              action="gdm.action_window"/>
+    <menuitem name="Server to list" id="gdm" parent="gdm.menu_2"
+              action="gdm.action_server"/>
 -->
   </data>
 </odoo>

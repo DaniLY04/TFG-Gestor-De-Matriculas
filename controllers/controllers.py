@@ -2,21 +2,21 @@
 # from odoo import http
 
 
-# class GestorDeMatriculas(http.Controller):
-#     @http.route('/gestor_de_matriculas/gestor_de_matriculas', auth='public')
+# class Gdm(http.Controller):
+#     @http.route('/gdm/gdm', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/gestor_de_matriculas/gestor_de_matriculas/objects', auth='public')
+#     @http.route('/gdm/gdm/objects', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('gestor_de_matriculas.listing', {
-#             'root': '/gestor_de_matriculas/gestor_de_matriculas',
-#             'objects': http.request.env['gestor_de_matriculas.gestor_de_matriculas'].search([]),
+#         return http.request.render('gdm.listing', {
+#             'root': '/gdm/gdm',
+#             'objects': http.request.env['gdm.gdm'].search([]),
 #         })
 
-#     @http.route('/gestor_de_matriculas/gestor_de_matriculas/objects/<model("gestor_de_matriculas.gestor_de_matriculas"):obj>', auth='public')
+#     @http.route('/gdm/gdm/objects/<model("gdm.gdm"):obj>', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('gestor_de_matriculas.object', {
+#         return http.request.render('gdm.object', {
 #             'object': obj
 #         })
 

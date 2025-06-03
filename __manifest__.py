@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "GestorDeMatriculas",
+    'name': "gdm",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -18,7 +18,7 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
@@ -30,6 +30,8 @@ Long description of module's purpose
         'views/asignatura.xml',
         'views/boletin_notas.xml',
         'views/matricula.xml',
+        'views/matricula_template.xml',
+        'views/matricula_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_report_matricula" model="ir.actions.report">
+        <field name="name">Matrícula de Alumno</field>
+        <field name="model">gdm.matricula</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gdm.report_matricula_document</field>
+        <field name="report_file">gdm.report_matricula_document</field>
+        <field name="binding_model_id" ref="model_gdm_matricula"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'MATRICULA_' + object.name</field>
+    </record>
+</odoo>

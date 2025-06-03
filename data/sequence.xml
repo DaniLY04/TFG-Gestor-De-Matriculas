@@ -2,15 +2,15 @@
     <data noupdate="1">
         <record id="increment_boletin_sequence" model="ir.sequence">
             <field name="name">ID Boletín Automático</field>
-            <field name="code">gestor_de_matriculas.boletin_notas</field>
+            <field name="code">gdm.boletin_notas</field>
             <field name="prefix">BOLETIN-</field>
             <field name="padding">6</field>
             <field name="company_id" eval="False"/>
         </record>
         <record id="increment_matricula_sequence" model="ir.sequence">
             <field name="name">ID Matricula Automático</field>
-            <field name="code">gestor_de_matriculas.matricula</field>
-            <field name="prefix">MATRICULA-</field>
+            <field name="code">gdm.matricula</field>
+            <field name="prefix">MTR-</field>
             <field name="padding">10</field>
             <field name="company_id" eval="False"/>
         </record>

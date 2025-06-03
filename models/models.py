@@ -3,9 +3,9 @@
 # from odoo import models, fields, api
 
 
-# class gestor_de_matriculas(models.Model):
-#     _name = 'gestor_de_matriculas.gestor_de_matriculas'
-#     _description = 'gestor_de_matriculas.gestor_de_matriculas'
+# class gdm(models.Model):
+#     _name = 'gdm.gdm'
+#     _description = 'gdm.gdm'
 
 #     name = fields.Char()
 #     value = fields.Integer()

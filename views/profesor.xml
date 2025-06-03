@@ -1,8 +1,8 @@
 <odoo>
     <data>
         <record model="ir.ui.view" id="view_profesor_list">
-            <field name="name">gestor_de_matriculas.profesor.list</field>
-            <field name="model">gestor_de_matriculas.profesor</field>
+            <field name="name">gdm.profesor.list</field>
+            <field name="model">gdm.profesor</field>
             <field name="arch" type="xml">
                 <list string="Profesores">
                     <field name="name"/>
@@ -17,8 +17,8 @@
         </record>
 
         <record id="view_profesor_form" model="ir.ui.view">
-            <field name="name">gestor_de_matriculas.profesor.form</field>
-            <field name="model">gestor_de_matriculas.profesor</field>
+            <field name="name">gdm.profesor.form</field>
+            <field name="model">gdm.profesor</field>
             <field name="arch" type="xml">
                 <form string="Profesores">
                     <sheet>
@@ -42,7 +42,7 @@
                             </group>
                             <group string="Información Profesional">
                                 <field name="is_tutor"/>
-                                <field name="course_tutor"/>
+                                <field name="course_tutor" invisible="not is_tutor"/>
                                 <field name="courses"/>
                                 <field name="subjects"/>
                                 <field name="qualifications"/>
@@ -55,7 +55,7 @@
 
         <record id="action_profesor" model="ir.actions.act_window">
             <field name="name">Profesores</field>
-            <field name="res_model">gestor_de_matriculas.profesor</field>
+            <field name="res_model">gdm.profesor</field>
             <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -66,6 +66,6 @@
                 </p>
             </field>
         </record>
-        <menuitem id="menu_profesor" name="Profesor" parent="menu_gestor_matriculas_root" action="action_profesor"/>
+        <menuitem id="menu_profesor" name="Profesor" parent="menu_gdm_root" action="action_profesor"/>
     </data>
 </odoo>

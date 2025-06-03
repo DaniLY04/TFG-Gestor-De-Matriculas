@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 import re
 
 class persona(models.Model):
-    _name = 'gestor_de_matriculas.persona'
+    _name = 'gdm.persona'
     _description = 'Clase Padre Para Las Personas'
 
     type_document = fields.Selection([
