@@ -20,11 +20,11 @@
                         </table>
                     </div>
 
-                    <div class="titulo" style="margin-top:10px">
-                        <h3>DATOS DE MATRÍCULA</h3>
+                    <div class="titulo" style="margin-top:10px; margin-left:30px;">
+                        <h3>DATOS DE MATRICULA</h3>
                     </div>
 
-                    <table class="table table-sm" style="width:100%; border-collapse: collapse;">
+                    <table class="table table-sm" style="width:100%; border-collapse: collapse; margin-left:30px;">
                         <tr>
                             <td><strong>Referencia:</strong></td>
                             <td><span t-esc="o.name"/></td>
@@ -40,11 +40,11 @@
                         <tr>
                             <td><strong>Fecha Nac.:</strong></td>
                             <td><span t-esc="o.alumno.date_birth and o.alumno.date_birth.strftime('%d/%m/%Y') or ''"/></td>
-                            <td><strong>Teléfono:</strong></td>
+                            <td><strong>Telefono:</strong></td>
                             <td><span t-esc="o.alumno.phone"/></td>
                         </tr>
                         <tr>
-                            <td><strong>Dirección:</strong></td>
+                            <td><strong>Direccion:</strong></td>
                             <td colspan="3"><span t-field="o.alumno.adress" t-options='{"widget": "text"}'/></td>
                         </tr>
                         <tr>
@@ -53,11 +53,11 @@
                         </tr>
                     </table>
 
-                    <div class="titulo" style="margin-top:10px">
+                    <div class="titulo" style="margin-top:10px; margin-left:30px;">
                         <h3>CURSO</h3>
                     </div>
 
-                    <table class="table table-sm" style="width:100%; border-collapse: collapse;">
+                    <table class="table table-sm" style="width:100%; border-collapse: collapse; margin-left:30px;">
                         <tr>
                             <td><strong>Curso:</strong></td>
                             <td><span t-esc="o.curso_id.name"/></td>
@@ -65,14 +65,14 @@
                             <td><span t-esc="o.curso_id.id_course"/></td>
                         </tr>
                         <tr>
-                            <td><strong>Promoción:</strong></td>
+                            <td><strong>Promocion:</strong></td>
                             <td><span t-esc="o.curso_id.promotion"/></td>
-                            <td><strong>Estado Académico:</strong></td>
+                            <td><strong>Estado Academico:</strong></td>
                             <td><span t-esc="dict(o._fields['state'].selection).get(o.state)"/></td>
                         </tr>
                     </table>
 
-                    <div t-if="o.asignaturas_convalidadas_ids" style="margin-top:10px">
+                    <div t-if="o.asignaturas_convalidadas_ids" style="margin-top:10px; margin-left:30px;">
                         <div class="titulo">
                             <h3>ASIGNATURAS CONVALIDADAS</h3>
                         </div>
@@ -86,15 +86,11 @@
                         </table>
                     </div>
 
-                    <div class="footer" style="margin-top:30px; text-align:right;">
-                        <p>______________________________</p>
-                        <p>Firma del Colegio</p>
-                    </div>
-                    <div class="qr-code" style="position:absolute; bottom:10mm; left:10mm;">
+                    <div class="footer">
                         <t t-if="o.qr_code">
-                            <img t-att-src="'data:image/png;base64,' + o.qr_code.decode('utf-8')" style="width:200px; height:200px;"/>
-                            <p>Verificación del documento</p>
+                            <img t-att-src="'data:image/png;base64,' + o.qr_code.decode('utf-8')" style="width:100px; height:100px;"/>
                         </t>
+                        <p>Escaneame Para Validarme</p>
                     </div>
                 </div>
             </t>
